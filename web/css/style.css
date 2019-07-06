@@ -1,0 +1,22 @@
+.site-wrapper {
+	display: flex;
+	font-family: 'Poppins', sans-serif;
+	min-height: 100vh;
+}
+.right {
+	flex-basis: 30%;
+	background: #f3f3f3;
+}
+.left {
+	flex-grow: 1;
+	background: #fafafa;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.nothing-selected {
+	color: #e6e6e6
+}
+.notification-area {
+	padding: 5px 20px;
+}

@@ -9,25 +9,91 @@
 
 	<link rel="stylesheet" href="css/style.css">
 	<title>WUSAFE Admin</title>
+
+	<style>
+		
+		#map {
+			background: #ddd;
+			flex-basis: 100%;
+		}
+
+	</style>
+
 </head>
 <body>
 	
 	<div class="site-wrapper" id="site-wrapper">
 		<div class="left">
-			<h2 class="nothing-selected" v-show="notificationSelected">Select Notification To See Details</h2>
+				<h2 class="nothing-selected" v-show="!showDetails">Select Notification To See Details</h2>
+
+				<div class="details-wrapper" v-show="showDetails">
+
+					<h1 id="details-heading">Rosna Is Requesting Medical Assitance</h1>
+					
+					<div id="map"></div>
+
+					<div class="details">
+						
+						<p class="name" id="details-name"><span>Name: </span>Rosna Jane</p>
+						<p class="phone" id="details-phone"><span>Phone: </span>9946120048</p>
+
+				<!-- 		<h3 class="trusted-contacts">Trusted Contacts</h3>
+						<ul class="contacts-list" >
+							<li v-for="contact in trustedContacts">
+								
+							</li>
+						</ul> -->
+						
+					</div>
+
+				</div>
+				
 			
 		</div>
 		<div class="right">
 			<div class="notification-area">
+				
 				<header>
 					<h4 class="notification-heading">Notifications</h4>
-					
 				</header>
+
+				<ul class="notifications-list">
+					<li class="notification" v-for="request in requests">
+						<notification :person="request.userData.name" :type="request.type" :lat="request.location.lat" :lang="request.location.log" :custom-message="request.message" :trusted-contacts="request.userData.trus"></notification>
+						
+					</li>
+				</ul>
+
 			</div>
 		</div>
 	</div>
 
+	<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
+	
 	<script src="js/vue.js"></script>
 	<script src="js/script.js"></script>
+
+	<script>
+
+		let map;
+
+		function initMap() {
+
+			map = new google.maps.Map( document.getElementById('map'), { 
+				center: { lat: app.lat , lng: app.lng },
+				zoom: 20
+			} )
+
+			let marker = new google.maps.Marker( {position: { lat: app.lat, lng: app.lng }, map: map} );
+
+		}
+
+
+	</script>
+
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWbZWO1JAi8p81yJ8IXhcw3Nuum8489uM"
+	    async defer></script>
 </body>
 </html>

@@ -42,6 +42,7 @@ let notification = Vue.component('notification', {
 				case "4":
 					this.heading = 'Pulse Rate Of ' + this.person + 'Is Having A Higher Pulse Rate'
 					break;
+				default: this.heading = 'No Issues'
 
 			}								
 
@@ -63,19 +64,16 @@ let notification = Vue.component('notification', {
 				case "1": 
 					this.medical  = true;
 					return 'Medical Assistance';
-					break;
 				case "2":
 					this.physical = true;
 					return 'Physical Assistance';
-					break;
 				case "3":
 					this.message = true
 					return 'Custom Message';
-					break;
 				case "4":
 					this.auto = true
 					return 'Pulse Rate';
-					break;
+				default: return false
 
 			}
 

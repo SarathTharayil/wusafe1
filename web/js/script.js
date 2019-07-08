@@ -1,4 +1,6 @@
 
+ import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.esm.browser.js';
+
 let eventDispatcher = new Vue();
 
 let notification = Vue.component('notification', {
@@ -150,7 +152,7 @@ let app = new Vue( {
 			let userRef = this.database.ref('/Users/' + request['uid']);
 			let that = this;
 
-			userRef.on('value', function( valueSnapshot) {
+			userRef.on('value', function( valueSnapshot ) {
 				
 				let userData =  valueSnapshot.val()				
 
@@ -179,7 +181,7 @@ let app = new Vue( {
 
 				console.log( requestData )
 
-				for( request in requestData ) {
+				for( let request in requestData ) {
 					if( request ) 
 						that.getUserData( requestData[request] )
 				}

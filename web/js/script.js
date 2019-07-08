@@ -228,7 +228,9 @@ let app = new Vue( {
 			heading.innerHTML = data.heading
 			name.innerHTML = data.person
 
-			initMap( data.lat, data.lang )
+			console.log( data )
+
+			that.initMap( parseInt(data.lat), parseInt(data.lang) )
 
 		} )		
 
